@@ -11,3 +11,7 @@ export const Button = () => {
   btn.addEventListener('click', e => console.log(e));
   return btn;
 };
+
+export const TakeuchiOrigin = () => {
+  return `<button>takeuchi</button>`;
+};
