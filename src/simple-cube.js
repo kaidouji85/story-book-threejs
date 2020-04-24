@@ -1,10 +1,12 @@
 import * as THREE from "three";
+import {GameObject} from "./game-object";
 
 /**
  * シンプルなキューブ
  */
-export class SimpleCube {
+export class SimpleCube  extends GameObject {
   constructor() {
+    super();
     this.geometry = new THREE.BoxGeometry();
     this.material = new THREE.MeshBasicMaterial({color: 0x00ff00});
     this.cube = new THREE.Mesh(this.geometry, this.material);

@@ -1,10 +1,12 @@
 import * as THREE from "three";
+import {GameObject} from "./game-object";
 
 /**
  * シンプルな球体
  */
-export class SimpleSphere {
+export class SimpleSphere extends GameObject {
   constructor() {
+    super();
     this.geometry = new THREE.SphereGeometry( );
     this.material = new THREE.MeshBasicMaterial({color: 0x0000ff});
     this.sphere = new THREE.Mesh(this.geometry, this.material);

@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import {SimpleCube} from "./cube";
+import {SimpleCube} from "./simple-cube";
 import {SimpleSphere} from "./simple-sphere";
 
 /**
@@ -15,11 +15,18 @@ export class ThreeMain {
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-    //this.cube = new SimpleCube();
-    //this.scene.add(this.cube.getObject3D());
+    const cube = new SimpleCube();
+    cube.getObject3D().position.x = 1;
 
-    this.sphere = new SimpleSphere();
-    this.scene.add(this.sphere.getObject3D());
+    const sphere = new SimpleSphere();
+    sphere.getObject3D().position.x = -1;
+
+    this.gameObjects = [cube, sphere];
+    this.gameObjects
+      .map(gameObject => gameObject.getObject3D())
+      .forEach(object3D => {
+        this.scene.add(object3D);
+      });
 
     this.animate();
   }
@@ -31,8 +38,9 @@ export class ThreeMain {
    */
   animate() {
     requestAnimationFrame(this.animate.bind(this));
-    //this.cube.animate();
-    this.sphere.animate();
+    this.gameObjects.forEach(gameObject => {
+      gameObject.animate();
+    });
     this.renderer.render(this.scene, this.camera);
   }
 
