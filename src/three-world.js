@@ -5,7 +5,7 @@ import {SimpleSphere} from "./simple-sphere";
 /**
  * three.js メイン処理
  */
-export class ThreeMain {
+export class ThreeWorld {
   constructor() {
     this.scene = new THREE.Scene();
 
@@ -14,21 +14,20 @@ export class ThreeMain {
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-
-    const cube = new SimpleCube();
-    cube.getObject3D().position.x = 1;
-
-    const sphere = new SimpleSphere();
-    sphere.getObject3D().position.x = -1;
-
-    this.gameObjects = [cube, sphere];
-    this.gameObjects
-      .map(gameObject => gameObject.getObject3D())
-      .forEach(object3D => {
-        this.scene.add(object3D);
-      });
+    this.gameObjects = [];
 
     this.animate();
+  }
+
+  /**
+   * ゲームオブジェクトを追加する
+   *
+   * @param {GameObject} gameObject 追加するゲームオブジェクト
+   * @return void
+   */
+  addGameObject(gameObject) {
+    this.gameObjects = this.gameObjects.concat(gameObject);
+    this.scene.add(gameObject.getObject3D());
   }
 
   /**

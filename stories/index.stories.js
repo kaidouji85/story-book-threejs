@@ -1,4 +1,4 @@
-import {ThreeMain} from "../src/three-main";
+import {ThreeWorld} from "../src/three-world";
 
 export default {
   title: 'Demo',
@@ -16,7 +16,7 @@ export const Button = () => {
 
 export const HelloThreeJS = () => {
   const div = document.createElement('div');
-  const threeMain = new ThreeMain();
+  const threeMain = new ThreeWorld();
   div.appendChild(threeMain.getDomElement());
   return div;
 }
