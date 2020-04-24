@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import {SimpleCube} from "./cube";
+import {SimpleSphere} from "./simple-sphere";
 
 /**
  * three.js メイン処理
@@ -14,8 +15,11 @@ export class ThreeMain {
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-    this.cube = new SimpleCube();
-    this.scene.add(this.cube.getObject3D());
+    //this.cube = new SimpleCube();
+    //this.scene.add(this.cube.getObject3D());
+
+    this.sphere = new SimpleSphere();
+    this.scene.add(this.sphere.getObject3D());
 
     this.animate();
   }
@@ -27,7 +31,8 @@ export class ThreeMain {
    */
   animate() {
     requestAnimationFrame(this.animate.bind(this));
-    this.cube.animate();
+    //this.cube.animate();
+    this.sphere.animate();
     this.renderer.render(this.scene, this.camera);
   }
 
