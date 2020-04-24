@@ -1,10 +1,11 @@
 import * as THREE from "three";
-import {SimpleCube} from "./cube";
+import {SimpleCube} from "./simple-cube";
+import {SimpleSphere} from "./simple-sphere";
 
 /**
  * three.js メイン処理
  */
-export class ThreeMain {
+export class ThreeWorld {
   constructor() {
     this.scene = new THREE.Scene();
 
@@ -13,11 +14,20 @@ export class ThreeMain {
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-
-    this.cube = new SimpleCube();
-    this.scene.add(this.cube.getObject3D());
+    this.gameObjects = [];
 
     this.animate();
+  }
+
+  /**
+   * ゲームオブジェクトを追加する
+   *
+   * @param {GameObject} gameObject 追加するゲームオブジェクト
+   * @return void
+   */
+  addGameObject(gameObject) {
+    this.gameObjects = this.gameObjects.concat(gameObject);
+    this.scene.add(gameObject.getObject3D());
   }
 
   /**
@@ -27,7 +37,9 @@ export class ThreeMain {
    */
   animate() {
     requestAnimationFrame(this.animate.bind(this));
-    this.cube.animate();
+    this.gameObjects.forEach(gameObject => {
+      gameObject.animate();
+    });
     this.renderer.render(this.scene, this.camera);
   }
 
