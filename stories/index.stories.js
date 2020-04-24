@@ -1,4 +1,5 @@
 import {ThreeWorld} from "../src/three-world";
+import {SimpleSphere} from "../src/simple-sphere";
 
 export default {
   title: 'Demo',
@@ -14,9 +15,14 @@ export const Button = () => {
   return btn;
 };
 
-export const HelloThreeJS = () => {
+export const Sphere = () => {
   const div = document.createElement('div');
-  const threeMain = new ThreeWorld();
-  div.appendChild(threeMain.getDomElement());
+
+  const world = new ThreeWorld();
+  div.appendChild(world.getDomElement());
+
+  const sphere = new SimpleSphere();
+  world.addGameObject(sphere);
+
   return div;
 }
