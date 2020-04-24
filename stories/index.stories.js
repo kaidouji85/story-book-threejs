@@ -1,3 +1,5 @@
+import {ThreeMain} from "../src/three-main";
+
 export default {
   title: 'Demo',
 };
@@ -12,6 +14,9 @@ export const Button = () => {
   return btn;
 };
 
-export const TakeuchiOrigin = () => {
-  return `<button>takeuchi</button>`;
-};
+export const HelloThreeJS = () => {
+  const div = document.createElement('div');
+  const threeMain = new ThreeMain();
+  div.appendChild(threeMain.getDomElement());
+  return div;
+}
