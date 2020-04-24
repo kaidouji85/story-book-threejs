@@ -4,16 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm-run-all clean build serve",
     "serve": "http-server public",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "clean": "rimraf public/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "storybook",
+    "three.js"
+  ],
+  "author": "Y.Takeuchi",
   "license": "ISC",
   "dependencies": {
+    "npm-run-all": "^4.1.5",
     "three": "^0.115.0"
   },
   "devDependencies": {
@@ -21,6 +26,7 @@
     "@storybook/html": "^5.3.18",
     "babel-loader": "^8.1.0",
     "http-server": "^0.12.1",
+    "rimraf": "^3.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }
